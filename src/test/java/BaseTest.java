@@ -1,0 +1,54 @@
+import io.github.bonigarcia.wdm.WebDriverManager;
+import io.qameta.allure.Attachment;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.openqa.selenium.PageLoadStrategy;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+
+import java.io.IOException;
+import java.util.concurrent.TimeUnit;
+
+public class BaseTest {
+    public WebDriver driver;
+
+    @BeforeAll
+    static void beforeAll() {
+        WebDriverManager.chromedriver().setup();
+    }
+
+    void implicitlyWait(long seconds) {
+
+        driver.manage().timeouts().implicitlyWait(seconds, TimeUnit.SECONDS);
+
+    }
+
+    @Attachment(value = "Page screenshot", type = "image/png")
+    public byte[] saveScreenshot(byte[] screenShot) {
+        return screenShot;
+    }
+
+    @BeforeEach
+    void setup() throws IOException {
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--disable-notifications");
+        options.addArguments("--disable-popup-blocking");
+        options.addArguments("--start-maximized");
+        options.setPageLoadStrategy(PageLoadStrategy.NORMAL);
+
+        driver = new ChromeDriver(options);
+        implicitlyWait(5);
+        System.getProperties().load(ClassLoader.getSystemResourceAsStream("config.properties"));
+        driver.get(System.getProperty("site.url"));
+    }
+
+
+    @AfterEach
+    void tearDown() {
+        if (driver != null) {
+            driver.quit();
+        }
+    }
+}
