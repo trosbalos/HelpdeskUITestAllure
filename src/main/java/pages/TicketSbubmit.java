@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.io.IOException;
+
 public class TicketSbubmit extends AbstractPage {
     @FindBy(xpath = "//*[@id=\"id_title\"]")
     public WebElement titleField;
@@ -34,77 +36,90 @@ public class TicketSbubmit extends AbstractPage {
     }
 
     @Step
-    public TicketSbubmit queueDropDownClick() {
+    public TicketSbubmit queueDropDownClick() throws IOException {
         this.queueDropDown.click();
+        takeScreenshot(driver);
         return this;
     }
 
     @Step
-    public TicketSbubmit djangoSelectClick() {
+    public TicketSbubmit djangoSelectClick() throws IOException {
         this.djangoSelect.click();
+        takeScreenshot(driver);
         return this;
     }
 
     @Step
-    public TicketSbubmit titleFieldInput(String title) {
+    public TicketSbubmit titleFieldInput(String title) throws IOException {
         this.titleField.sendKeys(title);
+        takeScreenshot(driver);
         return this;
     }
 
     @Step
-    public String titleFieldGetAttribute() {
+    public String titleFieldGetAttribute() throws IOException {
+        takeScreenshot(driver);
         return this.titleField.getAttribute("value");
     }
 
     @Step
-    public TicketSbubmit ticketDescriptionInput(String description) {
+    public TicketSbubmit ticketDescriptionInput(String description) throws IOException {
         this.ticketDescription.sendKeys(description);
+        takeScreenshot(driver);
         return this;
     }
 
     @Step
-    public String ticketDescriptionGetAttribute() {
+    public String ticketDescriptionGetAttribute() throws IOException {
+        takeScreenshot(driver);
         return this.ticketDescriptionAfterCreate.getAttribute("value");
     }
 
     @Step
-    public TicketSbubmit ticketPriorityClick() {
+    public TicketSbubmit ticketPriorityClick() throws IOException {
         this.ticketPriority.click();
+        takeScreenshot(driver);
         return this;
     }
 
     @Step
-    public TicketSbubmit criticalPriorityClick() {
+    public TicketSbubmit criticalPriorityClick() throws IOException {
         this.criticalPriority.click();
+        takeScreenshot(driver);
         return this;
     }
 
     @Step
-    public TicketSbubmit dueOnDropDownClick() {
+    public TicketSbubmit dueOnDropDownClick() throws IOException {
         this.dueOnDropDown.click();
+        takeScreenshot(driver);
         return this;
     }
 
     @Step
-    public TicketSbubmit dateTwoOClick() {
+    public TicketSbubmit dateTwoOClick() throws IOException {
         this.dateTwoO.click();
+        takeScreenshot(driver);
         return this;
     }
 
     @Step
-    public TicketSbubmit emailFieldInput(String email) {
+    public TicketSbubmit emailFieldInput(String email) throws IOException {
         this.emailField.sendKeys(email);
+        takeScreenshot(driver);
         return this;
     }
 
     @Step
-    public String emailFieldGetAttribute() {
+    public String emailFieldGetAttribute() throws IOException {
+        takeScreenshot(driver);
         return this.emailField.getAttribute("value");
     }
 
     @Step
-    public TicketSbubmit submitButtonClick() {
+    public TicketSbubmit submitButtonClick() throws IOException {
         this.submitButton.click();
+        takeScreenshot(driver);
         return this;
     }
 }

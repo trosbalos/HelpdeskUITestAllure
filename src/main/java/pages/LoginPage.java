@@ -23,18 +23,21 @@ public class LoginPage extends AbstractPage {
     @Step
     public LoginPage inputUsernameField(String name) throws IOException {
         userNameField.sendKeys(name);
+        takeScreenshot(driver);
         return this;
     }
 
     @Step
-    public LoginPage inputPasswordField(String password) {
+    public LoginPage inputPasswordField(String password) throws IOException {
         passwordField.sendKeys(password);
+        takeScreenshot(driver);
         return this;
     }
 
     @Step
-    public LoginPage submitButtonClick() {
+    public LoginPage submitButtonClick() throws IOException {
         submitButton.click();
+        takeScreenshot(driver);
         return this;
     }
 

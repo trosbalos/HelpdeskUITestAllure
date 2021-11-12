@@ -1,9 +1,13 @@
 package pages;
 
+
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import java.io.IOException;
+
 
 public class MainPage extends AbstractPage {
 
@@ -17,14 +21,16 @@ public class MainPage extends AbstractPage {
     }
 
     @Step
-    public MainPage clickLogInButton() {
+    public MainPage clickLogInButton() throws IOException {
         logInButton.click();
+        takeScreenshot(driver);
         return this;
     }
 
     @Step
-    public MainPage clickNewTicket() {
+    public MainPage clickNewTicket() throws IOException {
         newTicketSpan.click();
+        takeScreenshot(driver);
         return this;
     }
 
